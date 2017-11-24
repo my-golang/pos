@@ -31,7 +31,7 @@ namespace LL.POS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.tNowTime = new System.Windows.Forms.Timer(this.components);
             this.timeCursor = new System.Windows.Forms.Timer(this.components);
@@ -331,7 +331,7 @@ namespace LL.POS
             this.GvPayFlow.AutoGenerateColumns = false;
             this.GvPayFlow.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.GvPayFlow.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GvPayFlow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.GvPayFlow.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GvPayFlow.ColumnHeadersVisible = false;
             this.GvPayFlow.DataSource = this.bindingPayFlow;
             this.GvPayFlow.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1588,7 +1588,6 @@ namespace LL.POS
             // 
             this.picLogo.BackColor = System.Drawing.Color.Transparent;
             this.picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
             this.picLogo.Location = new System.Drawing.Point(7, 6);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(185, 32);

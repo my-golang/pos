@@ -104,7 +104,7 @@
                 _branchName = value;
             }
         }
-        private static string _server = "192.168.1.36";
+        private static string _server = "122.144.131.108";
         /// <summary>
         /// 服务器
         /// </summary>
@@ -122,7 +122,7 @@
             get { return _user; }
             set { _user = value; }
         }
-        private static string _password = "root";
+        private static string _password = "SKDB@)!*2018shikang2017";
         /// <summary>
         /// 密码
         /// </summary>
@@ -131,7 +131,7 @@
             get { return _password; }
             set { _password = value; }
         }
-        private static string _database = "esales";
+        private static string _database = "yii2_shop";
         /// <summary>
         /// 数据库
         /// </summary>

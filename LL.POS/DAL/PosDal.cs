@@ -2541,7 +2541,7 @@ namespace LL.POS
             {
                 string date = System.DateTime.Now.ToString(Gattr.DateFormat);
                 sqlI = "insert into t_product_food_type(typeno,typename,parent,last_refresh_time) values (@typeno,@typename,@parent,@last_refresh_time)";
-                sqlU = "update t_product_food_type set typename=@typename,parent=@parent,last_refresh_time@last_refresh_time where typeno=@typeno";
+                sqlU = "update t_product_food_type set typename=@typename,parent=@parent,last_refresh_time=@last_refresh_time where typeno=@typeno";
                 sqlD = "delete from t_product_food_type where typeno=@typeno";
                 transList = new List<SqlParaEntity>();
                 if (del == -1)

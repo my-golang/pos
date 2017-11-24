@@ -2236,7 +2236,7 @@
                                             if (_temp.code == "1")
                                             {
                                                 meminfo.mem_type = "WX";
-                                                this.lbVipValue.Text = "【" + meminfo.mem_no + "】" + meminfo.username + "[利澜微会员]";
+                                                this.lbVipValue.Text = "【" + meminfo.mem_no + "】" + meminfo.username + "[供货港微会员]";
                                                 SetDoubleDisplay("2", this.lbAmtTotal.Text, this.lbPayAmtRec.Text, this.lbPayAmtPaid.Text, this.lbPayAmtChange.Text, this.lbQntyTotal.Text, meminfo.mem_no + "[利澜微会员]", meminfo.balance, meminfo.score);
                                             }
                                             else
@@ -2768,7 +2768,7 @@
                         {
                             if (_currentMember.mem_type == "WX")
                             {
-                                this.lbVipValue.Text = "【" + _currentMember.mem_no + "】" + _currentMember.username + "[利澜微会员]";
+                                this.lbVipValue.Text = "【" + _currentMember.mem_no + "】" + _currentMember.username + "[供货港微会员]";
                             }
                             else
                             {
@@ -2963,7 +2963,7 @@
                         {
                             if (_currentMember.mem_type == "WX")
                             {
-                                this.lbVipValue.Text = "【" + _currentMember.mem_no + "】" + _currentMember.username + "[利澜微会员]";
+                                this.lbVipValue.Text = "【" + _currentMember.mem_no + "】" + _currentMember.username + "[供货港微会员]";
                                 _isVip = true;
                                 this.ShowMessage("会员：" + _currentMember.mem_no + "成功记录");
 
