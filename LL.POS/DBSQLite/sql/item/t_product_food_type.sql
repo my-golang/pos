@@ -18,8 +18,8 @@ PRAGMA foreign_keys = OFF;
 -- Table structure for t_product_food_type
 -- ----------------------------
 DROP TABLE IF EXISTS "main"."t_product_food_type";
-CREATE TABLE "t_product_food_type" ("typeno" VARCHAR(10) NOT NULL,
-"typename" VARCHAR(50),
+CREATE TABLE "t_product_food_type" ("typeno" VARCHAR(50) NOT NULL,
+"typename" VARCHAR(250),
 "parent" VARCHAR(10),
 "last_refresh_time" VARCHAR(20),
 "images_ios" VARCHAR(200),

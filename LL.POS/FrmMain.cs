@@ -33,7 +33,8 @@
         /// <summary>
         /// 大、小类背景色
         /// </summary>
-        private Color _clsColor = Color.FromArgb(255, 232, 234);
+        //private Color _clsColor = Color.FromArgb(255, 232, 234);
+        private Color _clsColor = Color.FromArgb(102,205,170);
         /// <summary>
         /// 流水GridView背景色
         /// </summary>
@@ -451,6 +452,7 @@
             }
             else
             {
+                //this.SetTouchScreen(this.plClsBig, itemDt, "typeno", "typename", 0);
                 return false;
             }
             if (this.plClsBig.Controls.Count > 0)
@@ -509,6 +511,7 @@
         private bool InitTouchScreenForClsSmall()
         {
             //小类显示数量
+            //MessageBox.Show("2312321");
             this._smallClsNum = this.plClsSmall.Width / (this._myButtonSize.Width + this._spaceLen);
             if (this._smallClsNum <= 0)
             {
@@ -543,7 +546,7 @@
         /// <returns></returns>
         private bool ClsSmallPage(bool isNextPage, bool isFirst)
         {
-
+            //MessageBox.Show("22222222222222");
             if (this.plClsBig.Tag != null)
             {
                 string clsNo = string.Empty;
@@ -1643,6 +1646,7 @@
                             case "azs"://整单赠送
                             case "agz"://挂账
                             case "zfb"://支付宝
+                            case "wx"://微信
                             case "aca":
                                 this.CallKeyFunc(new t_attr_function() { func_id = str.ToLower() });
                                 break;
@@ -2090,6 +2094,10 @@
                     case PosOpType.支付宝:
                         //支付宝支付
                         this.FunKeyZFB();
+                        break;
+                    case PosOpType.微信:
+                        //微信支付
+                        this.FunKeyWX();
                         break;
                     case PosOpType.余额支付:
                         this.FunKeyYezf();
@@ -3188,6 +3196,7 @@
         /// </summary>
         public void FunKeyFkf()
         {
+            //MessageBox.Show("微信支付", Gattr.AppTitle);
             if (this._posState != PosOpState.PAY || (this._posState != PosOpState.CHG))
             {
                 FrmPayWay frmPayWay = new FrmPayWay(Convert.ToDecimal(this.lbPayAmtRec.Text), defaultPayWay, "A",_currentMember);
@@ -3591,12 +3600,90 @@
         }
         #endregion
 
+
+        #region 微信支付
+        /// <summary>
+        /// 微信支付
+        /// </summary>
+        private void FunKeyWX()
+        {
+            MessageBox.Show("微信支付", Gattr.AppTitle);
+            String Weixin_No = String.Empty;//订单号
+            try
+            {
+                if (this._posState == PosOpState.PAY)
+                {
+                    //生成订单号
+                    TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+                    String time = Convert.ToInt64(ts.TotalSeconds).ToString();
+                    Weixin_No = "GHG" + Gattr.OperId + time;
+                    //调用二维码支付接口获取二维码显示
+                    string Qrcode_url = GetWxQrcode(Weixin_No, Convert.ToDecimal(this.lbPayAmtRec.Text));
+                    //获取html文件内容
+                    //string Qrcode_html = Gattr.PayHtml.Replace("%QrcodeURL%", Qrcode_url);
+                    string Qrcode_html = Qrcode_url;
+                    if (Qrcode_url != "-1" && Qrcode_html != string.Empty)
+                    {
+                        ////恢复顾显URL显示
+                        //this.SetDoubleUrl(Gattr.adUrl);
+                        //双屏时显示
+                        Screen[] sc = Screen.AllScreens;
+                        if (sc.Length == 2)
+                        {
+                            //if (Gattr.IsDoubleModule && (this.frmdouble != null))
+                            if (Gattr.IsDoubleModule)
+                            {
+                                //设置二维码顾显显示
+                                this.SetDoubleQrcode(Qrcode_html);
+                                //显示支付宝支付窗体
+                                FrmAliPay frm_alipay = new FrmAliPay(Convert.ToDecimal(this.lbPayAmtRec.Text), Weixin_No);
+                                if (frm_alipay.ShowDialog() == DialogResult.OK)
+                                {
+                                    if (this.PosPayAmt("WX", frm_alipay.ReturnMoney, true, false))
+                                    {
+                                        LoggerHelper.Log("MsmkLogger", "使用微信支付！", LogEnum.SysLog);
+                                    }
+                                }
+                                else
+                                {
+                                    this.ShowMessage("取消微信支付！");
+                                }
+                                //恢复顾显URL显示
+                                this.SetDoubleUrl(Gattr.adUrl);
+                            }
+                            else
+                            {
+                                MessageBox.Show("顾显未正常显示，无法使用此功能！", Gattr.AppTitle);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("未发现顾显，无法使用此功能！", Gattr.AppTitle);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("支付二维码生成失败，无法使用此功能！", Gattr.AppTitle);
+                    }
+                }
+                else
+                {
+                    this.ShowMessage("当前状态，此功能键无效!");
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Log("MsmkLogger", "FrmMain ==> FunKeyWX ==>支付宝二维码支付出现异常！" + ex.ToString(), LogEnum.ExceptionLog);
+            }
+        }
+
         #region 支付宝支付
         /// <summary>
         /// 支付宝支付
         /// </summary>
         private void FunKeyZFB()
         {
+            MessageBox.Show("支付宝支付", Gattr.AppTitle);
             String Alipay_No = String.Empty;//订单号（提交支付宝用）
             try
             {
@@ -3604,8 +3691,9 @@
                 {
                     //生成订单号
                     TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                    String time = Convert.ToInt64(ts.TotalSeconds).ToString();     
-                    Alipay_No="JILAN" +Gattr.OperId+ time;
+                    String time = Convert.ToInt64(ts.TotalSeconds).ToString();
+                    //Alipay_No="JILAN" +Gattr.OperId+ time;
+                    Alipay_No = "GHG"  + time;
                     //调用二维码支付接口获取二维码显示
                     string Qrcode_url = GetQrcode(Alipay_No,Convert.ToDecimal(this.lbPayAmtRec.Text));
                     //获取html文件内容
@@ -3678,6 +3766,48 @@
                 LoggerHelper.Log("MsmkLogger", "FrmMain ==> FunKeyZFB ==>支付宝二维码支付出现异常！" + ex.ToString(), LogEnum.ExceptionLog);
             }
         }
+        /// <summary>
+        /// 生成微信支付二维码
+        /// </summary>
+        /// <param name="ordername"></param>
+        /// <returns></returns>
+        public string GetWxQrcode(String flow_no, decimal pay_amt)
+        {
+            String isConnect = String.Empty;
+            String address = String.Empty;
+            String response = String.Empty;
+            String serviceUrl = String.Empty;
+            bool isok = true;
+            string errorMessage = string.Empty;
+            Dictionary<string, object> _dic = new Dictionary<string, object>();
+            try
+            {
+                _dic.Add("username", "");
+                _dic.Add("password", "");
+                _dic.Add("access_token", Gattr.access_token);
+                _dic.Add("client_id", Gattr.client_id);
+                _dic.Add("pay_amount", pay_amt);
+                _dic.Add("flow_no", flow_no);
+                isConnect = PServiceProvider.Instance.InvokeMethod("http://esales2/manager/api/ws/API/Getwxqrcode", _dic, ref isok, ref errorMessage);
+                //isConnect = PServiceProvider.Instance.InvokeMethod("http://www.ghuog.com/erpalipay/index.php", _dic, ref isok, ref errorMessage);
+                //var jObject = JObject.Parse(isConnect);
+                //isConnect = jObject["data"]["imgUrl"].ToString();
+                if (isConnect == "error")
+                {
+                    isConnect = "-1";
+                    LoggerHelper.Log("MsmkLogger", Gattr.OperId + "支付二维码生成失败！", LogEnum.SysLog);
+                }
+                else
+                {
+                    LoggerHelper.Log("MsmkLogger", Gattr.OperId + "支付二维码生成成功！", LogEnum.SysLog);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Log("MsmkLogger", "LL.POS->FrmAliPay-->GetQrcode:" + ex.ToString(), LogEnum.ExceptionLog);
+            }
+            return isConnect;
+        }
 
         /// <summary>
         /// 生成支付二维码
@@ -3701,7 +3831,7 @@
                 _dic.Add("client_id", Gattr.client_id);
                 _dic.Add("pay_amount", pay_amt);
                 _dic.Add("flow_no", flow_no);
-               isConnect = PServiceProvider.Instance.InvokeMethod("http://esales/manager/api/ws/API/GetQrcode", _dic, ref isok, ref errorMessage);
+               isConnect = PServiceProvider.Instance.InvokeMethod("http://esales2/manager/api/ws/API/GetQrcode", _dic, ref isok, ref errorMessage);
                 //isConnect = PServiceProvider.Instance.InvokeMethod("http://www.ghuog.com/erpalipay/index.php", _dic, ref isok, ref errorMessage);
                 //var jObject = JObject.Parse(isConnect);
                 //isConnect = jObject["data"]["imgUrl"].ToString();
@@ -3764,7 +3894,7 @@
                             if (_temp.code == "1")
                             {
                                 SetDoubleDisplay("2", this.lbAmtTotal.Text, this.lbPayAmtRec.Text, this.lbPayAmtPaid.Text, this.lbPayAmtChange.Text, this.lbQntyTotal.Text, _currentMember.mem_no + "[利澜微会员]", _currentMember.balance, _currentMember.score);
-                                this.lbVipValue.Text = "【" + _currentMember.mem_no + "】" + _currentMember.username + "[利澜微会员]";
+                                this.lbVipValue.Text = "【" + _currentMember.mem_no + "】" + _currentMember.username + "[供货港微会员]";
                             }
                             else
                             {
@@ -4083,6 +4213,17 @@
                         }
                         payAmtPaid = SIString.TryDec(_tempAmt4);
                         payment = new t_payment_info() { rate = 1M, pay_way = "ZFB", pay_name = "支付宝支付" };
+                        payflow = SetPayFlowInfo(payAmtPaid, payment, _saleTotalAmt, _currentFlowNo, _card, _memo);
+                        _listPayFlow.Add(payflow);
+                        break;
+                    case "WX":
+                        decimal _tempAmt5 = _saleTotalAmt - GetTotalPayedAmt();
+                        if (isRedirect)
+                        {
+                            _tempAmt5 = payAmt;
+                        }
+                        payAmtPaid = SIString.TryDec(_tempAmt5);
+                        payment = new t_payment_info() { rate = 1M, pay_way = "WX", pay_name = "微信支付" };
                         payflow = SetPayFlowInfo(payAmtPaid, payment, _saleTotalAmt, _currentFlowNo, _card, _memo);
                         _listPayFlow.Add(payflow);
                         break;
@@ -5062,6 +5203,9 @@
                         break;
                     case "ZFB":
                         strPayWay = "支付宝";
+                        break;
+                    case "WX":
+                        strPayWay = "微信";
                         break;
                     default:
                         break;
@@ -6067,3 +6211,4 @@
 
     }
 }
+#endregion

@@ -281,7 +281,8 @@ namespace LL.POS
                         _dic.Add("last_time", ExtendUtility.Instance.ParseToDateTime(last_time3).ToString());
                         break;
                     case "Getitemcls":
-                        _dic.Add("rid", _t_handle.t_product_food_type);
+                        //_dic.Add("rid", _t_handle.t_product_food_type);
+                        _dic.Add("rid", -1);
                         break;
                     case "Getbasecode":
                         _dic.Add("rid", _t_handle.t_base_code_type);

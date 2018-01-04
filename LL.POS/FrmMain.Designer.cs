@@ -81,6 +81,7 @@ namespace LL.POS
             this.btnPicFunAllcan = new LL.POS.Common.ButtonForPos();
             this.btnPicFunAzs = new LL.POS.Common.ButtonForPos();
             this.btnPicFunAgz = new LL.POS.Common.ButtonForPos();
+            this.btnPicFunWx = new LL.POS.Common.ButtonForPos();
             this.tlpMain = new LL.POS.Common.TableLayoutPanelEx(this.components);
             this.plButton = new LL.POS.Common.PanelEx(this.components);
             this.tlpBottom = new LL.POS.Common.TableLayoutPanelEx(this.components);
@@ -190,6 +191,7 @@ namespace LL.POS
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunAllcan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunAzs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunAgz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPicFunWx)).BeginInit();
             this.tlpMain.SuspendLayout();
             this.plButton.SuspendLayout();
             this.tlpBottom.SuspendLayout();
@@ -320,7 +322,7 @@ namespace LL.POS
             this.tblPanelBalance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tblPanelBalance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPanelBalance.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblPanelBalance.Size = new System.Drawing.Size(658, 439);
+            this.tblPanelBalance.Size = new System.Drawing.Size(706, 439);
             this.tblPanelBalance.TabIndex = 10;
             this.tblPanelBalance.Visible = false;
             // 
@@ -343,7 +345,7 @@ namespace LL.POS
             this.GvPayFlow.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.GvPayFlow.RowTemplate.Height = 30;
             this.GvPayFlow.RowTemplate.ReadOnly = true;
-            this.GvPayFlow.Size = new System.Drawing.Size(649, 88);
+            this.GvPayFlow.Size = new System.Drawing.Size(697, 88);
             this.GvPayFlow.TabIndex = 0;
             this.GvPayFlow.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.GvPayFlow_DataError);
             // 
@@ -367,7 +369,7 @@ namespace LL.POS
             this.plPayInfo.Location = new System.Drawing.Point(5, 74);
             this.plPayInfo.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.plPayInfo.Name = "plPayInfo";
-            this.plPayInfo.Size = new System.Drawing.Size(648, 247);
+            this.plPayInfo.Size = new System.Drawing.Size(696, 247);
             this.plPayInfo.TabIndex = 3;
             // 
             // gbPayInput
@@ -680,7 +682,7 @@ namespace LL.POS
             this.plPayTitle.Location = new System.Drawing.Point(4, 4);
             this.plPayTitle.Margin = new System.Windows.Forms.Padding(0);
             this.plPayTitle.Name = "plPayTitle";
-            this.plPayTitle.Size = new System.Drawing.Size(650, 69);
+            this.plPayTitle.Size = new System.Drawing.Size(698, 69);
             this.plPayTitle.TabIndex = 4;
             // 
             // tblPayWay
@@ -707,13 +709,15 @@ namespace LL.POS
             this.tblPayWay.Controls.Add(this.btnPicFunAllcan, 8, 0);
             this.tblPayWay.Controls.Add(this.btnPicFunAzs, 6, 0);
             this.tblPayWay.Controls.Add(this.btnPicFunAgz, 7, 0);
+            this.tblPayWay.Controls.Add(this.btnPicFunWx, 8, 0);
             this.tblPayWay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblPayWay.Location = new System.Drawing.Point(0, 0);
             this.tblPayWay.Margin = new System.Windows.Forms.Padding(0);
             this.tblPayWay.Name = "tblPayWay";
             this.tblPayWay.RowCount = 1;
             this.tblPayWay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblPayWay.Size = new System.Drawing.Size(650, 69);
+            this.tblPayWay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblPayWay.Size = new System.Drawing.Size(698, 69);
             this.tblPayWay.TabIndex = 1;
             // 
             // btnPicFuncPayEsc
@@ -724,12 +728,12 @@ namespace LL.POS
             this.btnPicFuncPayEsc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFuncPayEsc.IsGrass = false;
             this.btnPicFuncPayEsc.IsItem = false;
-            this.btnPicFuncPayEsc.Location = new System.Drawing.Point(585, 0);
+            this.btnPicFuncPayEsc.Location = new System.Drawing.Point(0, 49);
             this.btnPicFuncPayEsc.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFuncPayEsc.MyText = "退出";
             this.btnPicFuncPayEsc.MyUpText = "Esc";
             this.btnPicFuncPayEsc.Name = "btnPicFuncPayEsc";
-            this.btnPicFuncPayEsc.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFuncPayEsc.Size = new System.Drawing.Size(69, 20);
             this.btnPicFuncPayEsc.TabIndex = 4;
             this.btnPicFuncPayEsc.TabStop = false;
             this.btnPicFuncPayEsc.Tag = "payesc";
@@ -748,7 +752,7 @@ namespace LL.POS
             this.btnPicFunRmb.MyText = "现金";
             this.btnPicFunRmb.MyUpText = "-";
             this.btnPicFunRmb.Name = "btnPicFunRmb";
-            this.btnPicFunRmb.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunRmb.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunRmb.TabIndex = 0;
             this.btnPicFunRmb.TabStop = false;
             this.btnPicFunRmb.Tag = "rmb";
@@ -762,12 +766,12 @@ namespace LL.POS
             this.btnPicFunBcd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunBcd.IsGrass = false;
             this.btnPicFunBcd.IsItem = false;
-            this.btnPicFunBcd.Location = new System.Drawing.Point(65, 0);
+            this.btnPicFunBcd.Location = new System.Drawing.Point(69, 0);
             this.btnPicFunBcd.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunBcd.MyText = "银行卡";
             this.btnPicFunBcd.MyUpText = "i";
             this.btnPicFunBcd.Name = "btnPicFunBcd";
-            this.btnPicFunBcd.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunBcd.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunBcd.TabIndex = 0;
             this.btnPicFunBcd.TabStop = false;
             this.btnPicFunBcd.Tag = "cdt";
@@ -781,12 +785,13 @@ namespace LL.POS
             this.btnPicFunZfb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunZfb.IsGrass = false;
             this.btnPicFunZfb.IsItem = false;
-            this.btnPicFunZfb.Location = new System.Drawing.Point(130, 0);
+            this.btnPicFunZfb.Location = new System.Drawing.Point(138, 0);
             this.btnPicFunZfb.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunZfb.MyText = "支付宝";
             this.btnPicFunZfb.MyUpText = "f";
             this.btnPicFunZfb.Name = "btnPicFunZfb";
-            this.btnPicFunZfb.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunZfb.Size = new System.Drawing.Size(69, 49);
+            this.btnPicFunZfb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.btnPicFunZfb.TabIndex = 0;
             this.btnPicFunZfb.TabStop = false;
             this.btnPicFunZfb.Tag = "zfb";
@@ -800,12 +805,12 @@ namespace LL.POS
             this.btnPicFunCou.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunCou.IsGrass = false;
             this.btnPicFunCou.IsItem = false;
-            this.btnPicFunCou.Location = new System.Drawing.Point(195, 0);
+            this.btnPicFunCou.Location = new System.Drawing.Point(207, 0);
             this.btnPicFunCou.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunCou.MyText = "余额支付";
             this.btnPicFunCou.MyUpText = "=";
             this.btnPicFunCou.Name = "btnPicFunCou";
-            this.btnPicFunCou.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunCou.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunCou.TabIndex = 0;
             this.btnPicFunCou.TabStop = false;
             this.btnPicFunCou.Tag = "yezf";
@@ -819,12 +824,12 @@ namespace LL.POS
             this.btnPicFunPayOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunPayOther.IsGrass = false;
             this.btnPicFunPayOther.IsItem = false;
-            this.btnPicFunPayOther.Location = new System.Drawing.Point(260, 0);
+            this.btnPicFunPayOther.Location = new System.Drawing.Point(276, 0);
             this.btnPicFunPayOther.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunPayOther.MyText = "其他方式";
             this.btnPicFunPayOther.MyUpText = ",";
             this.btnPicFunPayOther.Name = "btnPicFunPayOther";
-            this.btnPicFunPayOther.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunPayOther.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunPayOther.TabIndex = 0;
             this.btnPicFunPayOther.TabStop = false;
             this.btnPicFunPayOther.Tag = "payother";
@@ -838,12 +843,12 @@ namespace LL.POS
             this.btnPicFunAllDis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunAllDis.IsGrass = false;
             this.btnPicFunAllDis.IsItem = false;
-            this.btnPicFunAllDis.Location = new System.Drawing.Point(325, 0);
+            this.btnPicFunAllDis.Location = new System.Drawing.Point(345, 0);
             this.btnPicFunAllDis.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunAllDis.MyText = "整单折扣";
             this.btnPicFunAllDis.MyUpText = "j";
             this.btnPicFunAllDis.Name = "btnPicFunAllDis";
-            this.btnPicFunAllDis.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunAllDis.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunAllDis.TabIndex = 0;
             this.btnPicFunAllDis.TabStop = false;
             this.btnPicFunAllDis.Tag = "ads";
@@ -857,12 +862,12 @@ namespace LL.POS
             this.btnPicFunAllcan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunAllcan.IsGrass = false;
             this.btnPicFunAllcan.IsItem = false;
-            this.btnPicFunAllcan.Location = new System.Drawing.Point(520, 0);
+            this.btnPicFunAllcan.Location = new System.Drawing.Point(621, 0);
             this.btnPicFunAllcan.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunAllcan.MyText = "整单取消";
             this.btnPicFunAllcan.MyUpText = "e";
             this.btnPicFunAllcan.Name = "btnPicFunAllcan";
-            this.btnPicFunAllcan.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunAllcan.Size = new System.Drawing.Size(77, 49);
             this.btnPicFunAllcan.TabIndex = 0;
             this.btnPicFunAllcan.TabStop = false;
             this.btnPicFunAllcan.Tag = "aca";
@@ -876,12 +881,12 @@ namespace LL.POS
             this.btnPicFunAzs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunAzs.IsGrass = false;
             this.btnPicFunAzs.IsItem = false;
-            this.btnPicFunAzs.Location = new System.Drawing.Point(390, 0);
+            this.btnPicFunAzs.Location = new System.Drawing.Point(414, 0);
             this.btnPicFunAzs.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunAzs.MyText = "整单赠送";
             this.btnPicFunAzs.MyUpText = "s";
             this.btnPicFunAzs.Name = "btnPicFunAzs";
-            this.btnPicFunAzs.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunAzs.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunAzs.TabIndex = 5;
             this.btnPicFunAzs.TabStop = false;
             this.btnPicFunAzs.Tag = "azs";
@@ -895,16 +900,36 @@ namespace LL.POS
             this.btnPicFunAgz.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.btnPicFunAgz.IsGrass = false;
             this.btnPicFunAgz.IsItem = false;
-            this.btnPicFunAgz.Location = new System.Drawing.Point(455, 0);
+            this.btnPicFunAgz.Location = new System.Drawing.Point(483, 0);
             this.btnPicFunAgz.Margin = new System.Windows.Forms.Padding(0);
             this.btnPicFunAgz.MyText = "挂账";
             this.btnPicFunAgz.MyUpText = "g";
             this.btnPicFunAgz.Name = "btnPicFunAgz";
-            this.btnPicFunAgz.Size = new System.Drawing.Size(65, 69);
+            this.btnPicFunAgz.Size = new System.Drawing.Size(69, 49);
             this.btnPicFunAgz.TabIndex = 6;
             this.btnPicFunAgz.TabStop = false;
             this.btnPicFunAgz.Tag = "agz";
             this.btnPicFunAgz.Click += new System.EventHandler(this.picPayNum_Click);
+            // 
+            // btnPicFunWx
+            // 
+            this.btnPicFunWx.BackColor = System.Drawing.Color.Transparent;
+            this.btnPicFunWx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPicFunWx.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold);
+            this.btnPicFunWx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnPicFunWx.IsGrass = false;
+            this.btnPicFunWx.IsItem = false;
+            this.btnPicFunWx.Location = new System.Drawing.Point(552, 0);
+            this.btnPicFunWx.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPicFunWx.MyText = "微信";
+            this.btnPicFunWx.MyUpText = "w";
+            this.btnPicFunWx.Name = "btnPicFunWx";
+            this.btnPicFunWx.Size = new System.Drawing.Size(69, 49);
+            this.btnPicFunWx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.btnPicFunWx.TabIndex = 0;
+            this.btnPicFunWx.TabStop = false;
+            this.btnPicFunWx.Tag = "wx";
+            this.btnPicFunWx.Click += new System.EventHandler(this.picPayNum_Click);
             // 
             // tlpMain
             // 
@@ -2073,6 +2098,7 @@ namespace LL.POS
             this.plPayLeft.ResumeLayout(false);
             this.plPayTitle.ResumeLayout(false);
             this.tblPayWay.ResumeLayout(false);
+            this.tblPayWay.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFuncPayEsc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunRmb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunBcd)).EndInit();
@@ -2083,6 +2109,7 @@ namespace LL.POS
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunAllcan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunAzs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPicFunAgz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPicFunWx)).EndInit();
             this.tlpMain.ResumeLayout(false);
             this.plButton.ResumeLayout(false);
             this.tlpBottom.ResumeLayout(false);
@@ -2199,6 +2226,7 @@ namespace LL.POS
         private ButtonForPos btnPicFunRmb;
         private ButtonForPos btnPicFunBcd;
         private ButtonForPos btnPicFunZfb;
+        private ButtonForPos btnPicFunWx;
         private ButtonForPos btnPicFunCou;
         private ButtonForPos btnPicFunPayOther;
         private ButtonForPos btnPicFunAllDis;

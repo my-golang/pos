@@ -22,6 +22,7 @@ namespace LL.POS.Common
         储值卡,//CSC,
         购物券,// GWQ,
         支付宝,//ZFB
+        微信,//WX
         余额支付,//yezf
         整单赠送,//AZS
         挂账,//AGZ

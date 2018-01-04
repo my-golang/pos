@@ -2544,11 +2544,11 @@ namespace LL.POS
                 sqlU = "update t_product_food_type set typename=@typename,parent=@parent,last_refresh_time=@last_refresh_time where typeno=@typeno";
                 sqlD = "delete from t_product_food_type where typeno=@typeno";
                 transList = new List<SqlParaEntity>();
-                if (del == -1)
-                {
+                //if (del == -1)
+                //{
                     _current = new SqlParaEntity() { parameters = null, Sql = "delete from t_product_food_type" };
                     transList.Add(_current);
-                }
+                //}
                 foreach (DataRow dr in table.Rows)
                 {
                     parameters = new SQLiteParameter[4];

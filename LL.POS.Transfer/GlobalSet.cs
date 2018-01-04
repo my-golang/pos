@@ -40,7 +40,8 @@ namespace LL.POS.Transfer
             }
         }
 
-        private static String _posServiceUrl = "http://test.ghuog.com/";
+        //private static String _posServiceUrl = "http://test.ghuog.com/";
+        private static String _posServiceUrl = "http://esales2/";
         /// <summary>
         /// posservice服务url
         /// </summary>
